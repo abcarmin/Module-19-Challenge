@@ -27,7 +27,7 @@ These are the required libraries and dependencies:
     from crypto_wallet import generate_account, get_balance, send_transaction
 
 
-These are the required libraries and packages:
+These are the required libraries and packages to install:
 
     pip install web3==5.17
 
@@ -41,7 +41,11 @@ These are the required libraries and packages:
 
 ## Usage
 
-* Step 1 
+* Step 1: Import Ethereum Transaction Functions into the Fintech Finder Application
+
+I imported the following functions:
+
+    from crypto_wallet import generate_account, get_balance, send_transaction
 
 I created the customer's wallet and account then displayed the balance.
 
@@ -54,7 +58,7 @@ I created the customer's wallet and account then displayed the balance.
     st.sidebar.write(ether_balance)
 
 
-* Step 2
+* Step 2: Sign and Execute a Payment Transaction
 
 I calculated the wage and saved the transaction.
 
