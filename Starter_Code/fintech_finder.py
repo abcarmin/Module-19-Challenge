@@ -25,7 +25,6 @@
 
 ################################################################################
 # Imports
-from errno import EAUTH
 import streamlit as st
 from dataclasses import dataclass
 from typing import Any, List
@@ -82,6 +81,7 @@ from crypto_wallet import generate_account, get_balance, send_transaction
 # @TODO:
 # From `crypto_wallet.py import the functions generate_account, get_balance,
 #  and send_transaction
+
 # These functions have been imported at the top in the Imports section
 
 ################################################################################
@@ -135,7 +135,7 @@ st.sidebar.markdown("## Client Account Address and Ethernet Balance in Ether")
 # @TODO:
 #  Call the `generate_account` function and save it as the variable `account`
 
-account = generate_account(w3)
+account = generate_account()
 
 ##########################################
 
@@ -243,7 +243,7 @@ st.sidebar.markdown("## Total Wage in Ether")
 # Calculate total `wage` for the candidate by multiplying the candidate’s hourly
 # rate from the candidate database (`candidate_database[person][3]`) by the
 # value of the `hours` variable
-wage = candidate_database[person][3]*hours
+wage = candidate_database[person][3] * hours
 
 
 # @TODO
@@ -275,7 +275,7 @@ if st.sidebar.button("Send Transaction"):
     # Call the `send_transaction` function and pass it 3 parameters:
     # Your `account`, the `candidate_address`, and the `wage` as parameters
     # Save the returned transaction hash as a variable named `transaction_hash`
-    transaction_hash = send_transaction(account, candidate_address, wage)
+    transaction_hash = send_transaction(w3, account, candidate_address, wage)
 
     # Markdown for the transaction hash
     st.sidebar.markdown("#### Validated Transaction Hash")
@@ -288,7 +288,7 @@ if st.sidebar.button("Send Transaction"):
 
 # The function that starts the Streamlit application
 # Writes FinTech Finder candidates to the Streamlit page
-get_people()
+get_people(w3)
 
 ################################################################################
 # Step 3: Inspect the Transaction
